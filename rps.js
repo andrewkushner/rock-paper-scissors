@@ -105,7 +105,7 @@ async function game() {
       }
     }
     readline.close();
-    console.log(finalScore(userScore,compScore));
+    finalScore(userScore,compScore);
 }
 
 game();
