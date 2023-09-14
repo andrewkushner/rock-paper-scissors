@@ -9,9 +9,9 @@ const readline = require("readline/promises").createInterface({
   
 
 // Set variables for score tracking for function finalScore()
-var userScore = 0;
-var compScore = 0;
-var drawScore = 0;
+let userScore = 0;
+let compScore = 0;
+let drawScore = 0;
 
 // Used to select computer choice at random, and validate user input
 const moveOptions = ['rock', 'paper', 'scissors'];
