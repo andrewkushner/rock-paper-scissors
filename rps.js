@@ -7,26 +7,26 @@ const readline = require("readline/promises").createInterface({
   });
 
   
-// const readline = require('readline').createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-//   });
 
+// Set variables for score tracking for function finalScore()
 var userScore = 0;
 var compScore = 0;
 var drawScore = 0;
- 
+
+const moveOptions = ['rock', 'paper', 'scissors'];
+
+// Function to randomize computer's selection.
 function getComputerChoice (){
-        var moveOptions = ['rock', 'paper', 'scissors'],
         // Using math.rand generates a random number between 0 and 1.
         // Using Math.floor and multiplier, we can set the min/max value for math.rand
-        randNum = Math.floor(Math.random() * moveOptions.length),
+        let randNum = Math.floor(Math.random() * moveOptions.length),
 
         // Using the generated random number to select a choice
         compMove = moveOptions[randNum];
     return compMove;
 }
 
+// Function to play round and determine result.
 function playRound(playerSelection, computerSelection){
     // .toLowerCase allows user to input any variation of input - ex. rock rOck rocK roCK .. etc
     playerSelection = playerSelection.toLowerCase();
@@ -79,6 +79,7 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+// Final score compares user and computer score as the game progresses to determine win, loss or tie.
 function finalScore(userScore, compScore){
     if (userScore > compScore){
         return console.log("You win! Your score: " + userScore + ". Computer Score: " + compScore + ". Tie games: " + drawScore);
@@ -91,16 +92,20 @@ function finalScore(userScore, compScore){
     }
 }
 
+
+// Function game plays the game, calling other functions and outputting the results.
 async function game() {
     for (let i = 0; i < 5; i++) {
-      var answers = ['rock', 'paper', 'scissors'];
-      var computerSelection = getComputerChoice();
-      var playerSelection = await readline.question(`Rock, Paper or Scissors? `);
-     
-      if (answers.includes(playerSelection.toLowerCase())){
+        let computerSelection = getComputerChoice();
+        let playerSelection = await readline.question(`Rock, Paper or Scissors? `);
+    
+    // Using this if statement to take player input, set it to lower case (this enables the user to enter any variation or lower/upper case).
+    // and then alidate if it is an expected selection.
+      if (moveOptions.includes(playerSelection.toLowerCase())){
         console.log(playRound(playerSelection, computerSelection));
       }
       else{
+        // If user enters invalid selection it prompts again for correct input.
         playerSelection = await readline.question(`\nPlease enter a valid selection: `);
       }
     }
@@ -109,9 +114,6 @@ async function game() {
 }
 
 game();
-
-
-
 
 // // Readline question asks a question, storing user input within the variable, then use that variable in a function.
 // readline.question('Rock, Paper or Scissors? ', (playerSelection) => {
