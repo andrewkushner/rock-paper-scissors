@@ -13,6 +13,7 @@ var userScore = 0;
 var compScore = 0;
 var drawScore = 0;
 
+// Used to select computer choice at random, and validate user input
 const moveOptions = ['rock', 'paper', 'scissors'];
 
 // Function to randomize computer's selection.
