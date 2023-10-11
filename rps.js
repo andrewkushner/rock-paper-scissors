@@ -1,11 +1,21 @@
 // Readline is required to read user input.
 // Attempted to use prompt but unable to test successfully.
 // Seems to be related to an outdated library and testing on a mac.
-const readline = require("readline/promises").createInterface({
+// Browser
+const readline = import("readline/promises").createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
+
+
+// Node
+// const readline = require("readline/promises").createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
+
+  
   
 
 // Set variables for score tracking for function finalScore()
@@ -96,7 +106,7 @@ function finalScore(userScore, compScore){
 
 // Function game plays the game, calling other functions and outputting the results.
 async function game() {
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
         let computerSelection = getComputerChoice();
         let playerSelection = await readline.question(`Rock, Paper or Scissors? `);
     
@@ -109,7 +119,7 @@ async function game() {
         // If user enters invalid selection it prompts again for correct input.
         playerSelection = await readline.question(`\nPlease enter a valid selection: `);
       }
-    }
+    // }
     readline.close();
     finalScore(userScore,compScore);
 }

@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <title>Rock Paper Scissors</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Rock Paper Scissors</h1>
+
+    <div>
+      <button id="0">Rock</button>
+      <button id="1">Paper</button>
+      <button id="2">Scissors</button>
+    </div>
+
+    <script type="text/javascript" src="./rps.js"></script>
+    <script>
+      let ul = document.querySelector("ul");
+      let inp = document.querySelector("input");
+      let btn = document.querySelector("button");    
+      let li = document.createElement("li");
+      let spn = document.createElement("span");
+      let button = document.createElement("button");
+      let shopItem;
+
+      btn.addEventListener('click', playerSelection);
+
+      function playerSelection(){
+        // Create delete button for each item added to list, and append it
+        const buttonClick = document.createElement("button");
+        buttonClick.addEventListener('click', playGame);
+      }
+
+      // event is the PointerEvent which occurs when clicking the delete button for X item
+      function playGame(event){
+        // This will target the parentNode of the event source
+        // Which targets the parent of the delete button, the item in the list
+        // Removes the item
+        let test = event.target(id);
+        console.log('1');
+        // event.target.parentNode.remove();
+      }
+        
+    </script>
+  </body>
 </html>
