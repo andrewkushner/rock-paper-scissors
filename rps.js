@@ -2,18 +2,18 @@
 // Attempted to use prompt but unable to test successfully.
 // Seems to be related to an outdated library and testing on a mac.
 // Browser
-const readline = import("readline/promises").createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+// const readline = import("readline/promises").createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+//   });
 
 
 
 // Node
-// const readline = require("readline/promises").createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// });
+const readline = require("readline/promises").createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
   
   
@@ -106,20 +106,25 @@ function finalScore(userScore, compScore){
 
 // Function game plays the game, calling other functions and outputting the results.
 async function game() {
-    // for (let i = 0; i < 5; i++) {
-        let computerSelection = getComputerChoice();
-        let playerSelection = await readline.question(`Rock, Paper or Scissors? `);
-    
-    // Using this if statement to take player input, set it to lower case (this enables the user to enter any variation or lower/upper case).
-    // and then alidate if it is an expected selection.
-      if (moveOptions.includes(playerSelection.toLowerCase())){
-        console.log(playRound(playerSelection, computerSelection));
-      }
-      else{
-        // If user enters invalid selection it prompts again for correct input.
-        playerSelection = await readline.question(`\nPlease enter a valid selection: `);
-      }
-    // }
+    for (let i = 0; i < 100; i++) {
+        if (userScore == 5 || compScore == 5){
+            i = 101;
+        }
+        else{
+            let computerSelection = getComputerChoice();
+            let playerSelection = await readline.question(`Rock, Paper or Scissors? `);
+        
+        // Using this if statement to take player input, set it to lower case (this enables the user to enter any variation or lower/upper case).
+        // and then alidate if it is an expected selection.
+          if (moveOptions.includes(playerSelection.toLowerCase())){
+            console.log(playRound(playerSelection, computerSelection));
+          }
+          else{
+            // If user enters invalid selection it prompts again for correct input.
+            playerSelection = await readline.question(`\nPlease enter a valid selection: `);
+          }
+        } 
+    }
     readline.close();
     finalScore(userScore,compScore);
 }
