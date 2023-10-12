@@ -2,21 +2,16 @@
 // Attempted to use prompt but unable to test successfully.
 // Seems to be related to an outdated library and testing on a mac.
 // Browser
-// const readline = import("readline/promises").createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//   });
-
-
-
-// Node
-const readline = require("readline/promises").createInterface({
+const readline = import("file/lib").createInterface({
     input: process.stdin,
     output: process.stdout,
-});
+  });
 
-  
-  
+// Node
+// const readline = require("readline/promises").createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
 
 // Set variables for score tracking for function finalScore()
 let userScore = 0;
