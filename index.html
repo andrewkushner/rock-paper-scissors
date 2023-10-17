@@ -32,46 +32,44 @@
       // let inp = document.querySelector("input");
       // let li = document.createElement("li");
       // let spn = document.createElement("span");
-      
-      let button = document.querySelector("button");    
-      button.addEventListener("click", playerSelection);
+
+      // let button = document.querySelector("button");    
+      // button.addEventListener("click", playerSelection);
 
       function playerSelection(id){
         let playerChoice = event.target.id;
+        let text = '';
         if (playerChoice == 0){
-          return 'rock';
+          text = 'rock';
+          console.log(text);
+          return text;
         }
         else if (playerChoice == 1){
-          return 'paper';
+          text = 'paper';
+          console.log(text);
+          return text;
         }
-        else if (playerChoice == 2){
-          return 'scissors';
+        else {
+          text = 'scissors'
+          console.log(text);
+          return text;
         }
-        // console.log(playerChoice);
-        playGame();
       }
 
       // event is the PointerEvent which occurs when clicking the delete button for X item
-      function playGame(){
-        let compMove = getComputerChoice();
-        console.log(playerChoice);
-        console.log(compMove);
-        return;
+      function playGame(event){
+        getComputerChoice();
+        return 1;
       }
       
       function getComputerChoice (){
         // Using math.rand generates a random number between 0 and 1.
         // Using Math.floor and multiplier, we can set the min/max value for math.rand
-        let randNum = Math.floor(Math.random() * 3);
-        if (randNum == 0){
-          return 'rock';
-        }
-        else if (randNum == 1){
-          return 'paper';
-        }
-        else if (randNum == 2){
-          return 'scissors';
-        }
+        let randNum = Math.floor(Math.random() * moveOptions.length),
+
+        // Using the generated random number to select a choice
+        compMove = moveOptions[randNum];
+        return compMove;
       }
     </script>
     <!-- <script type="text/javascript" src="./rps.js"></script> -->
