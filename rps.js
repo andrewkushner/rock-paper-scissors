@@ -127,39 +127,3 @@ async function game() {
 }
 
 game();
-
-// // Readline question asks a question, storing user input within the variable, then use that variable in a function.
-// readline.question('Rock, Paper or Scissors? ', (playerSelection) => {
-//     console.log(playRound(playerSelection, computerSelection));
-//     readline.close();
-//   });
-
-// // Original code
-// function game(){
-//     var computerSelection = getComputerChoice();
-//         for (let i = 0; i < 5; i++) {
-//             // Readline question asks a question, storing user input within the variable, then use that variable in a function.
-//             readline.question('Rock, Paper or Scissors? ', (playerSelection) => {
-//                 console.log(playRound(playerSelection, computerSelection));
-//                 readline.close();
-//             });  
-//         }
-// }
-
-
-// Attempting to fix the loop - corrected the var computerSelection order as it was stuck on one input rather than updating each play.
-// function game(){
-//         var computerSelection = getComputerChoice();
-//         // Readline question asks a question, storing user input within the variable, then use that variable in a function.
-//         readline.question('Rock, Paper or Scissors? ', (playerSelection) => {
-//             console.log(playRound(playerSelection, computerSelection));
-//             readline.close();
-//         });  
-// }
-
-// var i = 0;
-// while (i < 5){
-//         game();
-//         i++;
-//         console.log(i);
-// }

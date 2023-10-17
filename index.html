@@ -22,21 +22,27 @@
     <div id="playerScore">Player Score:</div>
     <div id="compScore">Computer Score:</div>
     <div>
-      <button id="0" onclick="playerSelection(id)">Rock</button>
-      <button id="1" onclick="playerSelection(id)">Paper</button>
-      <button id="2" onclick="playerSelection(id)">Scissors</button>
+      <button id="0" onclick="playGame(id)">Rock</button>
+      <button id="1" onclick="playGame(id)">Paper</button>
+      <button id="2" onclick="playGame(id)">Scissors</button>
     </div>
 
     <script>
-      // let ul = document.querySelector("ul");
-      // let inp = document.querySelector("input");
-      // let li = document.createElement("li");
-      // let spn = document.createElement("span");
+      const moveOptions = ['rock', 'paper', 'scissors'];
 
-      // let button = document.querySelector("button");    
-      // button.addEventListener("click", playerSelection);
+      function playGame(id){
+        let playMove = getPlayerChoice(id);
+        let oppMove = getComputerChoice();
+        let round = playRound(playMove, oppMove);
 
-      function playerSelection(id){
+        return;
+      }
+
+      function playRound(playMove, oppMove){
+        
+      }
+      
+      function getPlayerChoice(id){
         let playerChoice = event.target.id;
         let text = '';
         if (playerChoice == 0){
@@ -54,12 +60,6 @@
           console.log(text);
           return text;
         }
-      }
-
-      // event is the PointerEvent which occurs when clicking the delete button for X item
-      function playGame(event){
-        getComputerChoice();
-        return 1;
       }
       
       function getComputerChoice (){
