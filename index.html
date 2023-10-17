@@ -22,39 +22,58 @@
     <div id="playerScore">Player Score:</div>
     <div id="compScore">Computer Score:</div>
     <div>
-      <button id="0">Rock</button>
-      <button id="1">Paper</button>
-      <button id="2">Scissors</button>
+      <button id="0" onclick="playerSelection(id)">Rock</button>
+      <button id="1" onclick="playerSelection(id)">Paper</button>
+      <button id="2" onclick="playerSelection(id)">Scissors</button>
     </div>
 
-    <script type="text/javascript" src="./rps.js"></script>
     <script>
-      let ul = document.querySelector("ul");
-      let inp = document.querySelector("input");
-      let btn = document.querySelector("button");    
-      let li = document.createElement("li");
-      let spn = document.createElement("span");
-      let button = document.createElement("button");
-      let shopItem;
+      // let ul = document.querySelector("ul");
+      // let inp = document.querySelector("input");
+      // let li = document.createElement("li");
+      // let spn = document.createElement("span");
+      
+      let button = document.querySelector("button");    
+      button.addEventListener("click", playerSelection);
 
-      btn.addEventListener('click', playerSelection);
-
-      function playerSelection(){
-        // Create delete button for each item added to list, and append it
-        const buttonClick = document.createElement("button");
-        buttonClick.addEventListener('click', playGame);
+      function playerSelection(id){
+        let playerChoice = event.target.id;
+        if (playerChoice == 0){
+          return 'rock';
+        }
+        else if (playerChoice == 1){
+          return 'paper';
+        }
+        else if (playerChoice == 2){
+          return 'scissors';
+        }
+        // console.log(playerChoice);
+        playGame();
       }
 
       // event is the PointerEvent which occurs when clicking the delete button for X item
-      function playGame(event){
-        // This will target the parentNode of the event source
-        // Which targets the parent of the delete button, the item in the list
-        // Removes the item
-        let test = event.target(id);
-        console.log('1');
-        // event.target.parentNode.remove();
+      function playGame(){
+        let compMove = getComputerChoice();
+        console.log(playerChoice);
+        console.log(compMove);
+        return;
       }
-        
+      
+      function getComputerChoice (){
+        // Using math.rand generates a random number between 0 and 1.
+        // Using Math.floor and multiplier, we can set the min/max value for math.rand
+        let randNum = Math.floor(Math.random() * 3);
+        if (randNum == 0){
+          return 'rock';
+        }
+        else if (randNum == 1){
+          return 'paper';
+        }
+        else if (randNum == 2){
+          return 'scissors';
+        }
+      }
     </script>
+    <!-- <script type="text/javascript" src="./rps.js"></script> -->
   </body>
 </html>
