@@ -19,27 +19,75 @@
   <body>
 
     <h1>Rock Paper Scissors</h1>
-    <div id="playerScore">Player Score:</div>
-    <div id="compScore">Computer Score:</div>
+    <div>Player: </div>
+    <div id="playerScore">0</div>
+    <div>Computer: </div>
+    <div id="compScore">0</div>
     <div>
       <button id="0" onclick="playGame(id)">Rock</button>
       <button id="1" onclick="playGame(id)">Paper</button>
       <button id="2" onclick="playGame(id)">Scissors</button>
     </div>
+    <div id="result"></div>
 
     <script>
       const moveOptions = ['rock', 'paper', 'scissors'];
+      let result = '';
+      let scoreboardUser = 0;
+      let scoreboardOpp = 0;
 
       function playGame(id){
-        let playMove = getPlayerChoice(id);
-        let oppMove = getComputerChoice();
-        let round = playRound(playMove, oppMove);
+        if (scoreboardUser == 5){
+          scoreboardUser = 0;
+          scoreboardOpp = 0;
+          
+          result = 'Player has won with a score of 5. Click to start a new game.';
+          return result;
+        }
+        else if (scoreboardOpp == 5){
+          scoreboardUser = 0;
+          scoreboardOpp = 0; 
+          result = 'Computer has won with a score of 5. Click to start a new game.';
+          return result;
+        }
+        else {
+          scoreboardUser = document.getElementById("playerScore");
+          scoreboardOpp = document.getElementById("compScore");
 
-        return;
+          let playMove = getPlayerChoice(id);
+          let oppMove = getComputerChoice();
+          let round = playRound(playMove, oppMove);
+        }
       }
 
       function playRound(playMove, oppMove){
-        
+        if (playMove == oppMove){
+          return 'Draw';
+        }
+        else if (playMove == 'rock' && oppMove == 'scissors'){
+          scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
+          return 'Player wins.';
+        }
+        else if (playMove == 'rock' && oppMove == 'paper'){
+          scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
+          return 'Computer wins.';
+        }
+        else if (playMove == 'paper' && oppMove == 'rock'){
+          scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
+          return 'Player wins.';
+        }
+        else if (playMove == 'paper' && oppMove == 'scissors'){
+          scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
+          return 'Computer wins';
+        }
+        else if (playMove == 'scissors' && oppMove == 'paper'){
+          scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
+          return 'Player wins.';
+        }
+        else if (playMove == 'scissors' && oppMove == 'rock'){
+          scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
+          return 'Computer wins.';
+        }
       }
       
       function getPlayerChoice(id){
@@ -47,17 +95,14 @@
         let text = '';
         if (playerChoice == 0){
           text = 'rock';
-          console.log(text);
           return text;
         }
         else if (playerChoice == 1){
           text = 'paper';
-          console.log(text);
           return text;
         }
         else {
           text = 'scissors'
-          console.log(text);
           return text;
         }
       }
