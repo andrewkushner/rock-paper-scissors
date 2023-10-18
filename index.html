@@ -32,23 +32,25 @@
 
     <script>
       const moveOptions = ['rock', 'paper', 'scissors'];
-      let result = '';
       let scoreboardUser = 0;
       let scoreboardOpp = 0;
+      let finalResult = document.getElementById("result");
+      let userScore = 0;
+      let oppScore = 0;
 
       function playGame(id){
-        if (scoreboardUser == 5){
-          scoreboardUser = 0;
-          scoreboardOpp = 0;
-          
-          result = 'Player has won with a score of 5. Click to start a new game.';
-          return result;
+        console.log(userScore);
+        if (userScore == 5){
+          finalResult.innerHTML = 'Player has won with a score of 5. Game will restart in 5 seconds.';
+          setTimeout(function(){
+            location.reload();
+          }, 5000);
         }
-        else if (scoreboardOpp == 5){
-          scoreboardUser = 0;
-          scoreboardOpp = 0; 
-          result = 'Computer has won with a score of 5. Click to start a new game.';
-          return result;
+        else if (oppScore == 5){
+          finalResult.innerHTML = 'Computer has won with a score of 5. Game will restart in 5 seconds.';
+          setTimeout(function(){
+            location.reload();
+          }, 5000);
         }
         else {
           scoreboardUser = document.getElementById("playerScore");
@@ -61,32 +63,32 @@
       }
 
       function playRound(playMove, oppMove){
-        if (playMove == oppMove){
-          return 'Draw';
-        }
-        else if (playMove == 'rock' && oppMove == 'scissors'){
+        if (playMove == 'rock' && oppMove == 'scissors'){
           scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
-          return 'Player wins.';
+          userScore++;
         }
         else if (playMove == 'rock' && oppMove == 'paper'){
+          oppScore++;
           scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
-          return 'Computer wins.';
         }
         else if (playMove == 'paper' && oppMove == 'rock'){
+          userScore++;
           scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
-          return 'Player wins.';
         }
         else if (playMove == 'paper' && oppMove == 'scissors'){
+          oppScore++;
           scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
-          return 'Computer wins';
         }
         else if (playMove == 'scissors' && oppMove == 'paper'){
+          userScore++;
           scoreboardUser.innerHTML = parseInt(scoreboardUser.innerHTML)+1;
-          return 'Player wins.';
         }
         else if (playMove == 'scissors' && oppMove == 'rock'){
+          oppScore++;
           scoreboardOpp.innerHTML = parseInt(scoreboardOpp.innerHTML)+1;
-          return 'Computer wins.';
+        }
+        else {
+          return;
         }
       }
       
